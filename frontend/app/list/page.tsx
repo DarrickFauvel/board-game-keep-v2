@@ -8,13 +8,15 @@ type Item = {
 }
 
 async function getData() {
-  const res = await fetch("http://localhost:5000/api/games")
+  const res = await fetch("http://localhost:5000/api/games", {
+    next: { revalidate: 0 },
+  })
 
   if (!res.ok) {
     throw new Error("Failed to fetch data")
   }
 
-  return res.json()
+  return await res.json()
 }
 
 export default async function ListPage() {
@@ -28,7 +30,7 @@ export default async function ListPage() {
 
   return (
     <section>
-      <h1>Read games</h1>
+      <h1>List games</h1>
       <ul>{items}</ul>
     </section>
   )

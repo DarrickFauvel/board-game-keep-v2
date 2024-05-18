@@ -60,30 +60,29 @@ app.post("/api/games", (req, res) => {
       return res.status(500).json({ message: "Could not create entry" })
     }
 
-    // res.status(201).json({
-    //   message: `New entry, ${name}, has been created`,
-    // })
-    res.sendFile(__dirname + "/public/success.html")
+    res.status(201).json({
+      message: `New entry, ${name}, has been created`,
+    })
   })
 })
 
 /* -------------------------------------------------------------------------- */
 /*                                Delete a game                               */
 /* -------------------------------------------------------------------------- */
-app.delete("/api/games", (req, res) => {
-  const { id } = req.body
+app.delete("/api/games/:id", (req, res) => {
+  const { id } = req.params
 
   const sql = `DELETE FROM ${tableName} WHERE id = ?`
-  // db.run(sql, [id], (err) => {
-  //   if (err) {
-  //     return res.status(500).json({
-  //       message: `Could not delete entry with ID = ${id}`,
-  //     })
-  //   }
-  //   return res.status(200).json({
-  //     message: `Entry with ID = ${id} deleted`,
-  //   })
-  // })
+  db.run(sql, [id], (err) => {
+    if (err) {
+      return res.status(500).json({
+        message: `Could not delete entry with ID = ${id}`,
+      })
+    }
+    return res.status(200).json({
+      message: `Entry with ID = ${id} deleted`,
+    })
+  })
 })
 
 /* -------------------------------------------------------------------------- */
