@@ -24,13 +24,15 @@ export default async function ListPage() {
 
   const items = data.map((item: Item) => (
     <li key={item.id}>
-      <Link href={`/boardgame/${item.id}`}>{item.name}</Link>
+      <Link className="" href={`/boardgame/${item.id}`}>
+        {item.name}
+      </Link>
     </li>
   ))
 
   return (
-    <section>
-      <h1>List games</h1>
+    <section className="prose prose-ul:list-none prose-ul:p-0">
+      <h1>Board games</h1>
       <ul>{items}</ul>
     </section>
   )

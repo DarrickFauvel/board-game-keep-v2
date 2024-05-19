@@ -25,11 +25,13 @@ export default async function GamePage({ params }: { params: { id: string } }) {
       <h1>Game page</h1>
       <h2>{name}</h2>
       <Image src={image_url} alt={name} width={100} height={100} />
-      <a href={bgg_url} target="_blank">
+      <a className="btn btn-link" href={bgg_url} target="_blank">
         Board Game Geek page
       </a>
 
-      <Link href={`/update/${id}`}>Update</Link>
+      <Link className="btn btn-accent" href={`/update/${id}`}>
+        Update
+      </Link>
     </section>
   )
 }
