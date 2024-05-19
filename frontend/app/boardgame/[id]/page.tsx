@@ -21,10 +21,11 @@ export default async function GamePage({ params }: { params: { id: string } }) {
   const { id, name, bgg_url, image_url } = data[0]
 
   return (
-    <section className="flex flex-col">
+    <section className="prose">
       <h1>Game page</h1>
       <h2>{name}</h2>
       <Image src={image_url} alt={name} width={100} height={100} />
+
       <a className="btn btn-link" href={bgg_url} target="_blank">
         Board Game Geek page
       </a>

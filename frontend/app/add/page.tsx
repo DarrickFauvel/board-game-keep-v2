@@ -1,6 +1,6 @@
 export default function AddPage() {
   return (
-    <section>
+    <section className="prose">
       <h1>Add a game</h1>
       <form className="flex flex-col gap-4" method="post">
         <label

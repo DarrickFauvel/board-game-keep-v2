@@ -16,7 +16,7 @@ export default async function Update({ params }: { params: { id: string } }) {
   // const { id, name, bgg_url, image_url } = data[0]
 
   return (
-    <section>
+    <section className="prose">
       <h1>Update a game</h1>
       <FormComponent {...data[0]} />
     </section>
