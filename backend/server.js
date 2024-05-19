@@ -1,10 +1,17 @@
 const express = require("express")
+const cors = require("cors")
 const app = express()
 const bodyParser = require("body-parser")
 const { db, tableName } = require("./connect.js")
 
 const port = 5000
 
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  })
+)
 app.use(express.static("public"))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())

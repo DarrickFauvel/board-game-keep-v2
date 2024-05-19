@@ -1,5 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
+import DeleteComponent from "./components/delete"
 
 type PropsType = {
   id: number
@@ -33,6 +34,8 @@ export default async function GamePage({ params }: { params: { id: string } }) {
       <Link className="btn btn-accent" href={`/update/${id}`}>
         Update
       </Link>
+
+      <DeleteComponent id={id} name={name} />
     </section>
   )
 }
