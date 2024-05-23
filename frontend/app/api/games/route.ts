@@ -23,6 +23,6 @@ export async function DELETE(request: Request, context: { params: Params }) {
     throw new Error("Failed to delete game")
   }
 
-  const data = await response.json()
+  // const data = await response.json()
   console.log("Delete successful")
 }

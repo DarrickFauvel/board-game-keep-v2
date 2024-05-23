@@ -26,4 +26,17 @@ db.run(sql, [], (err) => {
   }
 })
 
+/* -------------------------------------------------------------------------- */
+/*                             Add column to table                            */
+/* -------------------------------------------------------------------------- */
+const addColumnToTable = (columnName, columnType) => {
+  const sql = `ALTER TABLE ${tableName} ADD COLUMN ${columnName} ${columnType.toUpperCase()}`
+  db.run(sql, [], (err) => {
+    if (err) {
+      return console.error(err.message)
+    }
+  })
+}
+// addColumnToTable("is_favorite", "integer")
+
 module.exports = { db, tableName }

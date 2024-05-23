@@ -1,6 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
-import DeleteComponent from "./components/delete"
+import DeleteComponent from "./_components/delete"
 
 type PropsType = {
   id: number

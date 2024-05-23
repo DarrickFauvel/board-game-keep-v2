@@ -25,7 +25,7 @@ export default async function ListPage() {
   const items = data.map((item: Item) => (
     <li key={item.id}>
       <Link className="" href={`/boardgame/${item.id}`}>
-        {item.name}
+        {item.name} id:{item.id}
       </Link>
     </li>
   ))
