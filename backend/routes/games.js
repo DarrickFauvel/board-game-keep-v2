@@ -46,15 +46,12 @@ router.get("/:id", (req, res) => {
 /*                               Insert new game                              */
 /* -------------------------------------------------------------------------- */
 router.post("/", (req, res) => {
-  // console.log(req.body)
-  // res.send({ server_says: "Hi!" })
   if (Object.entries(req.body).length === 0) {
     console.log(`req.body object is empty`)
     return res.status(400).send("req.body object is empty")
   }
 
   const { name, bgg_url, image_url, location, is_favorite } = req.body
-  console.log(req.body)
   const sql = `INSERT INTO ${tableName} (name, bgg_url, image_url, location, is_favorite) VALUES (?,?,?,?,?)`
 
   db.run(sql, [name, bgg_url, image_url, location, is_favorite], (err) => {
