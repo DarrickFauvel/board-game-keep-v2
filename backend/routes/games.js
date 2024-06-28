@@ -38,7 +38,10 @@ router.get("/:id", (req, res) => {
     if (row < 1) {
       return res.status(404).json({ error: "Game not found" })
     }
-    return res.json(row)
+    console.log(`Game ID:${id} is got from server!`)
+    const data = res.json(row)
+    console.log(data)
+    return data
   })
 })
 

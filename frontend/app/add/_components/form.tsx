@@ -1,6 +1,7 @@
 "use client"
 
-import React, { SyntheticEvent, useState } from "react"
+import React, { useState } from "react"
+import { useRouter } from "next/navigation"
 import TextInputComponent from "./textInput"
 import LabelComponent from "./label"
 
@@ -14,6 +15,7 @@ const gameModel = {
 
 export default function FormComponent() {
   const [formData, setFormData] = useState(gameModel)
+  const router = useRouter()
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value =
@@ -35,7 +37,14 @@ export default function FormComponent() {
         },
         body: JSON.stringify(formData),
       })
-      console.log(await response.json())
+      setFormData({
+        name: "",
+        bgg_url: "",
+        image_url: "",
+        location: "",
+        is_favorite: false,
+      })
+      router.push("/list")
     } catch (err) {
       if (err) console.error("There was an error")
     }

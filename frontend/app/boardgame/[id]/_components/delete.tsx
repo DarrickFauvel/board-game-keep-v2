@@ -1,5 +1,6 @@
 "use client"
 
+import { useRouter } from "next/navigation"
 import { SyntheticEvent } from "react"
 
 type PropsTypes = {
@@ -8,6 +9,8 @@ type PropsTypes = {
 }
 
 export default function DeleteComponent(props: PropsTypes) {
+  const router = useRouter()
+
   const deleteGame = async (id: number) => {
     try {
       const response = await fetch(`http://localhost:5000/api/games/${id}`, {
@@ -23,6 +26,7 @@ export default function DeleteComponent(props: PropsTypes) {
 
       // const data = await response.json()
       console.log(`Delete successful of ID: ${id}`)
+      router.push("/list")
     } catch (error) {
       console.error("There was a problem with the fetch operation", error)
     }
